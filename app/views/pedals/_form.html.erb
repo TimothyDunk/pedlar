@@ -1,0 +1,32 @@
+<%= form_with(model: pedal) do |form| %>
+  <% if pedal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pedal.errors.count, "error") %> prohibited this pedal from being saved:</h2>
+
+      <ul>
+        <% pedal.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
