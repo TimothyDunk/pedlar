@@ -21,8 +21,7 @@ class PedalsController < ApplicationController
 
   # POST /pedals or /pedals.json
   def create
-    @pedal = Pedal.new(pedal_params)
-
+    @pedal = Pedal.new(pedal_params.merge(user_id: current_user.id))
     respond_to do |format|
       if @pedal.save
         format.html { redirect_to @pedal, notice: "Pedal was successfully created." }

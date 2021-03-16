@@ -8,6 +8,7 @@
       <th>Title</th>
       <th>Price</th>
       <th>Description</th>
+      <th>Posted by</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= pedal.title %></td>
         <td><%= pedal.price %></td>
         <td><%= pedal.description %></td>
+        <td><%= pedal.user.email %></td>
         <td><%= link_to 'Show', pedal %></td>
         <td><%= link_to 'Edit', edit_pedal_path(pedal) %></td>
         <td><%= link_to 'Destroy', pedal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

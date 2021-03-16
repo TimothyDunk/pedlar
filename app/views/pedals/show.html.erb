@@ -10,9 +10,16 @@
 </p>
 
 <p>
+  <strong>Posted by:</strong>
+  <%= @pedal.user.email %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @pedal.description %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_pedal_path(@pedal) %> |
 <%= link_to 'Back', pedals_path %>
