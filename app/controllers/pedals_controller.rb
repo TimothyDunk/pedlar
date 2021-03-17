@@ -63,6 +63,6 @@ class PedalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pedal_params
-      params.require(:pedal).permit(:title, :price, :description)
+      params.require(:pedal).permit(:title, :price, :description, :picture)
     end
 end
