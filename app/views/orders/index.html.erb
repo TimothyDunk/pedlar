@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Pedal</th>
+      <th>Bought/Sold</th>
+      <th>Pedal ID</th>
       <th>Address</th>
       <th>Postcode</th>
       <th>City</th>
@@ -20,7 +20,11 @@
     <% @orders.each do |order| %>
       <% if params[:pedal_id].to_i == order.pedal_id || current_user == order.user %>
         <tr>
-          <td><%= order.user_id %></td>
+          <% if current_user == order.user %>
+            <td>Bought</td>
+          <% else %>
+            <td>Sold</td>
+          <% end %>
           <td><%= order.pedal_id %></td>
           <td><%= order.address %></td>
           <td><%= order.postcode %></td>
