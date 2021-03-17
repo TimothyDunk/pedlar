@@ -18,16 +18,18 @@
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.user_id %></td>
-        <td><%= order.pedal_id %></td>
-        <td><%= order.address %></td>
-        <td><%= order.postcode %></td>
-        <td><%= order.city %></td>
-        <td><%= order.state %></td>
-        <td><%= order.country %></td>
-        <td><%= link_to 'Show', order %></td>
-      </tr>
+      <% if params[:pedal_id].to_i == order.pedal_id || current_user == order.user %>
+        <tr>
+          <td><%= order.user_id %></td>
+          <td><%= order.pedal_id %></td>
+          <td><%= order.address %></td>
+          <td><%= order.postcode %></td>
+          <td><%= order.city %></td>
+          <td><%= order.state %></td>
+          <td><%= order.country %></td>
+          <td><%= link_to 'Show', order %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
