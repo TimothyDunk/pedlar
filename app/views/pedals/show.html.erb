@@ -21,6 +21,9 @@
 </p>
 
 
-
-<%= link_to 'Edit', edit_pedal_path(@pedal) %> |
+<% if current_user == @pedal.user %>
+  <%= link_to 'Edit', edit_pedal_path(@pedal) %> |
+  <%= link_to 'Destroy', @pedal, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% else %>
+<% end %>
 <%= link_to 'Back', pedals_path %>
