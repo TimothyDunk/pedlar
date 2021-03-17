@@ -1,5 +1,6 @@
 class PedalsController < ApplicationController
   before_action :set_pedal, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   # GET /pedals or /pedals.json
   def index
@@ -35,23 +36,29 @@ class PedalsController < ApplicationController
 
   # PATCH/PUT /pedals/1 or /pedals/1.json
   def update
-    respond_to do |format|
-      if @pedal.update(pedal_params)
-        format.html { redirect_to @pedal, notice: "Pedal was successfully updated." }
-        format.json { render :show, status: :ok, location: @pedal }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @pedal.errors, status: :unprocessable_entity }
+    if current_user == @pedal.user
+      respond_to do |format|
+        if @pedal.update(pedal_params)
+          format.html { redirect_to @pedal, notice: "Pedal was successfully updated." }
+          format.json { render :show, status: :ok, location: @pedal }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @pedal.errors, status: :unprocessable_entity }
+        end
       end
+    else
     end
   end
 
   # DELETE /pedals/1 or /pedals/1.json
   def destroy
-    @pedal.destroy
-    respond_to do |format|
-      format.html { redirect_to pedals_url, notice: "Pedal was successfully destroyed." }
-      format.json { head :no_content }
+    if current_user == @pedal.user
+      @pedal.destroy
+      respond_to do |format|
+        format.html { redirect_to pedals_url, notice: "Pedal was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
     end
   end
 
