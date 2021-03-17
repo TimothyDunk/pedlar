@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   root 'pedals#index'
   devise_for :users
   resources :pedals
