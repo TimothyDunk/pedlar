@@ -7,6 +7,12 @@ class PedalsController < ApplicationController
     @pedals = Pedal.all
   end
 
+  # GET /pedals/search
+  def search  
+      @parameter = params[:query].downcase  
+      @pedals = Pedal.where("lower(title) LIKE ?", "%#{@parameter}%")
+  end
+
   # GET /pedals/1 or /pedals/1.json
   def show
   end
