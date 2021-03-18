@@ -1,3 +1,5 @@
+<%= render "shared/navbar" %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Pedals</h1>
@@ -31,5 +33,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Pedal', new_pedal_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Pedal', new_pedal_path %>
+<% end %>

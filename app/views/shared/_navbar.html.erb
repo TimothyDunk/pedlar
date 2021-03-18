@@ -1,5 +1,11 @@
 <nav> 
-    <% if user_signed_in?  %>
-    <span class="nav-greeting"> <%= "Welcome back, #{current_user.username}" %> </span>
-    <%= link_to  %>
+    <h1 id="site-name"><%= link_to 'PEDLAR', root_path %></h1>
+    <div>
+        <%= image_tag("guitar-pedal.png", :alt => "guitar pedal logo", :class => "pedlar-logo") %>
+        <ul>
+            <li class="nav-elements"> <%= link_to 'LIST PEDAL', new_pedal_path %> </li>
+            <li class="nav-elements"> <%= link_to 'BROWSE PEDALS', pedals_path %> </li>
+            <li class="nav-elements"> <%= link_to 'YOUR ORDERS', orders_path %> </li>
+        <ul>
+    </div>
 </nav>
