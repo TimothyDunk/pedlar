@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pedals/search', to: 'pedals#search'
   resources :orders
   root 'pages#home'
   devise_for :users
