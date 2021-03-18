@@ -68,27 +68,47 @@ label {
   display: block; }
 
 nav {
-  display: flex; 
+  /*display: flex; 
   flex-wrap: wrap; 
+  flex-flow: column;
   justify-items: center;
   justify-content: center;
-  flex-flow: column;
-  align-items: center;
+  align-items: center; */
 }  
 
-ul {
+.nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
   padding-inline-start: 0;
+  padding-top: 10px;
 }
 
 
 .nav-elements {
   display: flex;
-  justify-content: center;
 }
 
 .pedlar-logo {
-  width: 100px;
+  width: 60px;
   height: auto;
-  align-self: center;
+  margin-top: 15px;
 }
 
+.nav-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.home-content {
+  margin-top: 100px;
+}

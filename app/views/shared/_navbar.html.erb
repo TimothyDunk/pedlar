@@ -1,20 +1,22 @@
-<nav> 
-    <h1 id="site-name"><%= link_to 'PEDLAR', root_path %></h1>
-    <div>
+<nav>
+    <div class="nav-top">
+        <h1 id="site-name"><%= link_to 'PEDLAR', root_path %></h1>
+        <div class="search-bar">
+            <%= form_with url: pedals_search_path, method: :get do |form| %>
+            <%= form.label :query, "Search for:" %>
+            <%= form.text_field :query %>
+            <%= form.submit "Search" %>
+            <% end %>
+        </div>
+    </div>
+    <div class="nav-middle">
         <%= image_tag("guitar-pedal.png", :alt => "guitar pedal logo", :class => "pedlar-logo") %>
-        <ul>
+        <ul class="nav-links">
             <% if user_signed_in? %>
                 <li class="nav-elements"> <%= link_to 'LIST PEDAL', new_pedal_path %> </li>
                 <li class="nav-elements"> <%= link_to 'YOUR ORDERS', orders_path %> </li>
             <% end %>
             <li class="nav-elements"> <%= link_to 'BROWSE PEDALS', pedals_path %> </li>
         <ul>
-    </div>
-    <div class="search-bar">
-        <%= form_with url: pedals_search_path, method: :get do |form| %>
-        <%= form.label :query, "Search for:" %>
-        <%= form.text_field :query %>
-        <%= form.submit "Search" %>
-        <% end %>
     </div>
 </nav>
