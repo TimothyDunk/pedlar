@@ -42,9 +42,11 @@ ActiveRecord::Schema.define(version: 2021_03_17_080344) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
-
+# orders model
   create_table "orders", force: :cascade do |t|
+    # ties order to user, cannot be null
     t.bigint "user_id", null: false
+    # ties order to pedal, cannot be null
     t.bigint "pedal_id", null: false
     t.text "address"
     t.integer "postcode"
@@ -57,15 +59,18 @@ ActiveRecord::Schema.define(version: 2021_03_17_080344) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  # pedals model
   create_table "pedals", force: :cascade do |t|
     t.string "title"
     t.integer "price"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    # connect to user model
     t.integer "user_id"
   end
 
+  # users model
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -80,6 +85,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_080344) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  # foreign keys for orders to connect to pedals and users respectively
   add_foreign_key "orders", "pedals"
   add_foreign_key "orders", "users"
 end
